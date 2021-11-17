@@ -10,8 +10,6 @@ app.get('/:seed.png', (req, res) => {
     .toCanvas()
     .createPNGStream()
     .pipe(res);
-
-  canvas.createPNGStream().pipe(res);
 });
 
 app.listen(port);
