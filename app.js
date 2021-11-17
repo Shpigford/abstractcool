@@ -1,7 +1,7 @@
 const trianglify = require('trianglify');
-
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3001;
 
 app.get('/:seed.png', (req, res) => {
   res.set('Content-Type', 'image/png');
@@ -14,4 +14,4 @@ app.get('/:seed.png', (req, res) => {
   canvas.createPNGStream().pipe(res);
 });
 
-app.listen(3000);
+app.listen(port);
