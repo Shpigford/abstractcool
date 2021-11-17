@@ -7,10 +7,10 @@ app.get('/:seed.png', (req, res) => {
   res.set('Content-Type', 'image/png');
 
   trianglify({
-    width: 1000,
-    height: 1000,
-    cellSize: 200,
-    variance: 1,
+    width: parseInt(req.query.width) || 500,
+    height: parseInt(req.query.height) || 500,
+    cellSize: parseInt(req.query.cellSize) || 100,
+    variance: parseInt(req.query.variance) || 1,
     seed: req.params.seed
   })
     .toCanvas()
