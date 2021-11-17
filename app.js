@@ -6,7 +6,13 @@ const port = process.env.PORT || 3001;
 app.get('/:seed.png', (req, res) => {
   res.set('Content-Type', 'image/png');
 
-  trianglify({ width: 1000, height: 1000, seed: req.params.seed })
+  trianglify({
+    width: 1000,
+    height: 1000,
+    cellSize: 200,
+    variance: 1,
+    seed: req.params.seed
+  })
     .toCanvas()
     .createPNGStream()
     .pipe(res);
