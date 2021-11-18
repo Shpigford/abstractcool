@@ -10,11 +10,13 @@ app.get('/', (req, res) => {
 app.get('/:seed.png', (req, res) => {
   res.set('Content-Type', 'image/png');
 
+  variance = req.query.variance == null ? 1 : req.query.variance;
+
   trianglify({
     width: parseInt(req.query.width) || 500,
     height: parseInt(req.query.height) || 500,
     cellSize: parseInt(req.query.cellSize) || 100,
-    variance: Number(parseFloat(req.query.variance)).toFixed(4) || 1,
+    variance: Number(parseFloat(variance)).toFixed(2) || 1.0,
     seed: req.params.seed
   })
     .toCanvas()
